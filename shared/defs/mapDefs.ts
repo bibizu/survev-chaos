@@ -1,7 +1,7 @@
 import type { Vec2 } from "../utils/v2";
 import { Main } from "./maps/baseDefs";
-import {Chaos} from "./maps/chaosDefs";
 import { Birthday } from "./maps/birthdayDefs";
+import { Chaos } from "./maps/chaosDefs";
 import { Cobalt } from "./maps/cobaltDefs";
 import { Desert } from "./maps/desertDefs";
 import { Faction } from "./maps/factionDefs";
@@ -117,7 +117,9 @@ export interface MapDef {
         turkeyMode?: number;
         autoPerkCount: number;
         autoPerkTable: Array<{
-            name: string; count: number; weight: number;
+            name: string;
+            count: number;
+            weight: number;
         }>;
         spookyKillSounds?: boolean;
     };

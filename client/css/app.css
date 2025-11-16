@@ -3451,16 +3451,16 @@ a:active {
     }
 }
 .btn-mode-chaos {
-    /* for desktop */
-    animation-name: chaosPulse;
-    border-bottom: 4px solid #27694d;
+  /* for desktop */
+  animation-name: chaosPulse;
+  border-bottom: 4px solid #27694d;
 }
 
 @media (max-width: 850px), (max-width: 900px) and (min-resolution: 3dppx) {
-    /* for phone */
-    .btn-mode-chaos {
-        border-bottom: 2px solid #27694d;
-    }
+  /* for phone */
+  .btn-mode-chaos {
+      border-bottom: 2px solid #27694d;
+  }
 }
 
 #btns-quick-start {

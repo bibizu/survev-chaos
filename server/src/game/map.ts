@@ -356,32 +356,9 @@ export class GameMap {
                     Math.abs(place.pos.y - 1) * this.height,
                 );
             });
-
-
-        let totalWeight = 0.0;
-        let perkTable = this.mapDef.gameMode.autoPerkTable
-        for (let i = 0; i < perkTable.length; i++) {
-            totalWeight += perkTable[i].weight;
-        }
-        for (let i = 0; i < <number>this.mapDef.gameMode.autoPerkCount; i++) {
-            if (perkTable.length == 0) {
-                break;
-            }
-            // TODO: Seed this random because idk how
-            let rng = util.random(0, totalWeight);
-            let idx = 0;
-            while (rng > perkTable[idx].weight) {
-                rng -= perkTable[idx].weight;
-                idx++;
-            }
-            this.autoPerks.push(perkTable[idx].name);
-            totalWeight -= perkTable[idx].weight;
-            perkTable.splice(idx, 1);
-            if (perkTable.length < 1) {
-                break;
-            }
-        }
-
+        
+        this.genPerks([...this.mapDef.gameMode.autoPerkTable])
+        
         this.riverMasks = [];
 
         this.generateRiverMasks();
@@ -1959,6 +1936,32 @@ export class GameMap {
 
         this.incrementCount(type);
         return structure;
+    }
+
+    genPerks(perkTable: Array<{name: string; count: number; weight: number;}>) {
+        let totalWeight = 0.0;
+        this.autoPerks = [];
+        const rand = util.seededRand(this.seed);
+        for (let i = 0; i < perkTable.length; i++) {
+            totalWeight += perkTable[i].weight;
+        }
+        for (let i = 0; i < <number>this.mapDef.gameMode.autoPerkCount; i++) {
+            if (perkTable.length == 0) {
+                break;
+            }
+            let rng = rand(0, totalWeight);
+            let idx = 0;
+            while (rng > perkTable[idx].weight) {
+                rng -= perkTable[idx].weight;
+                idx++;
+            }
+            this.autoPerks.push(perkTable[idx].name);
+            totalWeight -= perkTable[idx].weight;
+            perkTable.splice(idx, 1);
+            if (perkTable.length < 1) {
+                break;
+            }
+        }
     }
 
     addBounds(mapObj: Obstacle | Building | Structure, hasParent: boolean) {

@@ -40,23 +40,37 @@ const mapDef: PartialMapDef = {
         map: {
             rivers: {
                 lakes: [
-                    {odds: 1, innerRad: 22, outerRad: 64, spawnBound: {pos: v2.create(0.5, 0.5), rad: 200,},},
-                    {odds: 1, innerRad: 22, outerRad: 64, spawnBound: {pos: v2.create(0.5, 0.5), rad: 200,},},
-                    {odds: 1, innerRad: 22, outerRad: 64, spawnBound: {pos: v2.create(0.5, 0.5), rad: 200,},},
+                    {
+                        odds: 1,
+                        innerRad: 22,
+                        outerRad: 64,
+                        spawnBound: {pos: v2.create(0.5, 0.5), rad: 200,},
+                    },
+                    {
+                        odds: 1,
+                        innerRad: 22,
+                        outerRad: 64,
+                        spawnBound: {pos: v2.create(0.5, 0.5), rad: 200,},
+                    },
+                    {
+                        odds: 1,
+                        innerRad: 22,
+                        outerRad: 64,
+                        spawnBound: {pos: v2.create(0.5, 0.5), rad: 200,},
+                    },
                 ],
-                weights: [
-                    { weight: 1, widths: [12, 8, 8, 8, 4] },
-                ],
+                weights: [{ weight: 1, widths: [12, 8, 8, 8, 4]}],
             }
         },
         spawnReplacements: [
             {
                 bush_01: "bush_07sp",
-                tree_01: "tree_07sp"
+                tree_01: "tree_07sp",
             },
         ]
     },
     gameMode: {
+        maxPlayers: 80,
         autoPerkCount: 4,
         autoPerkTable: [
             { name: "firepower", count: 1, weight: 1 },
@@ -80,7 +94,7 @@ const mapDef: PartialMapDef = {
             { name: "splinter", count: 1, weight: 0.5 },
             { name: "explosive_rounds", count: 1, weight: 0.2 },
             { name: "ap_rounds", count: 1, weight: 0.2 },
-            { name: "scavenger_adv", count: 1, weight: 0.2 }
+            { name: "scavenger_adv", count: 1, weight: 0.2 },
         ]
     }
 };
